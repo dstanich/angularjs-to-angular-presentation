@@ -54,7 +54,7 @@
 
 				<section>
 					<h2>What we'll cover</h2>
-					<div>One experience in migration</div>
+					<div>One experience in migration (May 2017 - June 2018)</div>
 					<br>
 					<ul>
 						<li>Justifying the conversion</li>
@@ -73,6 +73,7 @@
 						<li>How-to / guide / one size fits all</li>
 						<li>ngUpgrade</li>
 						<li>Migrating to React / Vue</li>
+						<li>Framework comparison</li>
 					</ul>
 				</section>
 
@@ -311,11 +312,71 @@
 
 				<section>
 					<section>
-						<h2>6. Evaluate Tooling/Process</h2>
+						<h2>6. Library Projects</h2>
 					</section>
 
 					<section>
-						<h2>Evaluate Tooling/Process</h2>
+						<h2>Library Projects</h2>
+						<ul>
+							<li>Create two packages for future projects</li>
+							<li>Publish packages via internal NPM registry</li>
+							<li>Custom build scripts</li>
+							<ul>
+								<li>Gulp</li>
+								<li>tsc</li>
+								<li>Rollup</li>
+							</ul>
+							<li>Versioned via <a href="https://semver.org/" target="semver">semver</a> (major.minor.fix)</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>API Package</h2>
+						<ul>
+							<li>Common data used across several products</li>
+							<li>Package contains shared:</li>
+							<ul>
+								<li>Services</li>
+								<li>Interfaces / models</li>
+								<li>Views (complex components)</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Component Library</h2>
+						<ul>
+							<li>New UX/design requiring custom styling</li>
+							<li>Includes demo application</li>
+							<li>Generated doc with compodoc (via JSDoc)</li>
+							<li>Supports: right-to-left, accessibility, translation</li>
+							<li>Source is mix of:</li>
+							<ul>
+								<li>Custom developed source</li>
+								<li>Wrappers around open source</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Versioning</h2>
+						<ul>
+							<li><a href="https://semver.org/" target="semver">semver</a> criteria</li>
+							<li>Automatic releases via <a href="https://semver.org/" target="semver">semantic-release</a></li>
+							<li>Every commit/merge triggers release</li>
+							<li>Application locks major.minor when preparing release</li>
+							<li>Release branches only when critical issue and version advanced too far</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>7. Tooling/Process Change</h2>
+					</section>
+
+					<section>
+						<h2>Tooling/Process Change</h2>
 						<ul>
 							<li>Source control</li>
 							<li>Builds</li>
