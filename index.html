@@ -1,0 +1,428 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>AngularJS to Angular: How We Did It</title>
+
+		<link rel="stylesheet" href="reveal.js-3.6.0/css/reveal.css">
+		<link rel="stylesheet" href="reveal.js-3.6.0/css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="reveal.js-3.6.0/lib/css/zenburn.css">
+
+		<link rel="stylesheet" href="overrides.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js-3.6.0/css/print/pdf.css' : 'reveal.js-3.6.0/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body style="background-image: 'images/angular.svg'">
+		<div class="reveal">
+			<div class="slides">
+				<section class="title-slide">
+					<h1 style="font-size: 2.0em">AngularJS to Angular:</h1>
+					<h2>How We Did it</h2>
+					<img src="images/Angular.svg">
+					<h3>David Stanich</h3>
+					<h4>https://url.goes.here</h4>
+				</section>
+
+				<section>
+					<h2>About Me</h2>
+					<div style="display: flex;">
+						<div style="flex: 1 1 75%">
+							<ul>
+								<li>Software Engineer</li>
+								<li>IBM Watson Health (<a href="https://www.ibm.com/watson/health/" target="wh">website</a>)</li>
+								<li>Frontend development</li>
+								<li>Co-organizer Rochester FED@IBM</li>
+								<li>JavaScript, Angular, Java</li>
+							</ul>
+						</div>
+						<div style="flex: 1 1 25%">
+							<img src="images/packers_hat.jpg">
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<h2>What we'll cover</h2>
+					<div>One experience in migration</div>
+					<br>
+					<ul>
+						<li>Justifying the conversion</li>
+						<li>Education</li>
+						<li>Culture changes</li>
+						<li>Tool improvements</li>
+						<li>Development methodology</li>
+						<li>Angular pitfalls we encountered</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Not Covered</h2>
+					<br>
+					<ul>
+						<li>How-to / guide / one size fits all</li>
+						<li>ngUpgrade</li>
+						<li>Migrating to React / Vue</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>1. Setting the Stage</h2>
+					</section>
+
+					<section>
+						<h2>Application State</h2>
+						<ul>
+							<li>5-6 UI developers</li>
+							<li>Deployed in customer environments</li>
+							<li>Customer support / new features still required</li>
+							<li>Medical application</li>
+							<li>Very dynamic, lots of configuration flags</li>
+							<li>Automated Selenium tests validating logic</li>
+							<li>Supports: IE11, FF, Chrome, iOS</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Code History</h2>
+						<ul>
+							<li>Originally built in <a href="https://dojotoolkit.org/" target="dojo">Dojo Toolkit</a></li>
+							<li>Ported to AngularJS</li>
+							<li>Minimal usage of 1.5 components</li>
+							<li>$scope soup</li>
+							<li>Accessible</li>
+							<li>Translated into several languages</li>
+							<li>Right-to-left language support</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Tech/Tooling Stack</h2>
+						<ul>
+							<li>AngularJS 1.5</li>
+							<li>JSPM dependency management and packaging</li>
+							<li>Custom Gulp builds</li>
+							<li>Data provided by REST APIs</li>
+							<li>Heavy bootstrap usage</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>2. Justifying the Conversion</h2>
+					</section>
+
+					<section>
+						<h2>Justify to the Business</h2>
+						<div style="margin-bottom: .5em">Common concerns:</div>
+						<ul>
+							<li>What is the value of converting?</li>
+							<li>What are we sacrificing by converting?</li> 
+							<li>How long is this going to take?</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Don't Over Promise</h2>
+						<ul>
+							<li>Realistic expectations</li>
+							<ul>
+								<li>Learning</li>
+								<li>Vacations</li>
+								<li>Maintain existing product</li>
+								<li>Failures / learning opportunities</li>
+								<li>Unexpected complications</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Our Value Justification</h2>
+						<ul>
+							<li>New UX</li>
+							<li>New look and feel</li>
+							<li>Base for new features</li>
+							<li>Lower maintenance cost</li>
+							<li>Learn tech base for future products</li>
+							<li>Estimate: 5-6 months</li>
+							<li>Sacrifice: limit features to new UX</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>In Place or Rewrite?</h2>
+						<div style="display: flex">
+							<div style="flex: 1 1 50%; margin-right: 2em;">
+								<div style="font-weight: bold; border-bottom: 1px solid;">In place (ngUpgrade)</div>
+								<div style="text-align: start">
+									<div>+ Less risk in breaking</div>
+									<div>+ Incremental</div>
+									<div>- Difficult w/new UX</div>
+									<div>- Bundle size increases</div>
+								</div>
+							</div>
+							<div style="flex: 1 1 50%">
+								<div style="font-weight: bold;border-bottom: 1px solid;">Rewrite</div>
+								<div style="text-align: start">
+									<div>+ Cleaner code</div>
+									<div>+ Experience</div>
+									<div>- More time required</div>
+									<div>- Tests rewrite</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>3. Learn / Education</h2>
+					</section>
+
+					<section>
+						<h2>Steps</h2>
+						<ul>
+							<li>Important to spent time to learn framework</li>
+							<li>Started with a few team members; share out</li>
+							<li>Best practices (<a href="https://angular.io/guide/styleguide" target="styleguide">style guide</a>)</li>
+							<li>Potential pitfalls</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Frontend Masters</h2>
+						<div>Locally based (Minneapolis) online, and in person, training workshops</div>
+						<div style="margin-top: 1em; text-align: start">
+							<div>
+								<a href="https://frontendmasters.com/courses/building-apps-angular/" target="ngx-fem">Building Awesomer Apps with Angular</a>
+								<br>11+ hour workshop on Angular essentials
+							</div>
+							<div style="margin-top: 1em">
+								<a href="https://frontendmasters.com/courses/reactive-angular/" target="ngx-fem2">Reactive Angular2</a>
+								<br>Observables and RxJS with Angular
+							</div>
+						</div>
+						<div style="margin-top:1.5em">
+							<a href=="https://www.frontendmasters.com" target="fem">https://www.frontendmasters.com</a>
+						</div>
+					</section>
+
+					<section>
+						<h2>Safari Books Online</h2>
+						<div>O'Reilly online learning website</div>
+						<ul>
+							<li>Books</li>
+							<li>Video training</li>
+							<li>Online workshops</li>
+						</ul>
+						<div style="margin-top: 1em">
+							<a href="https://www.safaribooksonline.com/" target="sbo">https://www.safaribooksonline.com</a>
+						</div>
+					</section>
+
+					<section>
+						<h2>Pluralsight / Udemy</h2>
+						<div style="margin-bottom: 1.5em">Online learning platforms published by various creators; lots of content</div>
+						<div><a href="https://www.udemy.com/" target="udemy">https://www.udemy.com</a></div>
+						<div><a href="https://www.pluralsight.com/" target="psight">https://www.pluralsight.com</a></div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>4. Identifying Dependencies</h2>
+					</section>
+
+					<section>
+						<h2>Process</h2>
+						<ol>
+							<li>Define all 1.x dependencies</li>
+							<li>Are there Angular versions?</li>
+							<li>Validate in dependency test app</li>
+						</ol>
+					</section>
+
+					<section>
+						<h2>Dependency Test App</h2>
+						<ul>
+							<li>No frills app to test libraries</li>
+							<li>Inject all dependencies at same time</li>
+							<li>Validate use cases</li>
+							<li>Test AoT build</li>
+						</ul>
+					</section>
+
+					<section>
+						SCREENSHOT???? <!--TODO-->
+					</section>
+
+					<section>
+						<h2>Package Checklist</h2>
+						<ul style="list-style-type: circle">
+							<li>Use case validation</li>
+							<li>IE11, FF, Chrome, iOS</li>
+							<li>Accessibility</li>
+							<li>Right-to-left support</li>
+							<li>Translation support</li>
+							<li>Acceptable license</li>
+							<li>Issues, contributors, activity</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>5. Reuse</h2>
+					</section>
+
+					<section>
+						<h2>Identify Potential 1.x Reuse</h2>
+						<ul>
+							<li>Services</li>
+							<li>Filters</li>
+							<li>Directives</li>
+							<li>Some controller functions</li>
+						</ul>
+					</section>
+					
+					<section>
+						<h2>Reusing Code</h2>
+						<ul>
+							<li>Update syntax</li>
+							<li>Add types</li>
+							<li>Decide between Promises / Observables</li>
+							<li>Migrate functions only when needed</li>
+							<li>Fight urge to rewrite</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>6. Evaluate Tooling/Process</h2>
+					</section>
+
+					<section>
+						<h2>Evaluate Tooling/Process</h2>
+						<ul>
+							<li>Source control</li>
+							<li>Builds</li>
+							<li>Code reviews</li>
+							<li>Standups</li>
+							<li>Technical meetings</li>
+							<li>Demos</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Source Control</h2>
+						<div style="margin-bottom:1em;">
+							<a href="https://jazz.net/products/rational-team-concert/" target="rtc">Rational Team Concert (RTC)</a>
+							==>
+							<a href="https://enterprise.github.com/home" target="ghe">GitHub Enterprise</a>
+						</div>
+						<ul>
+							<li>Better code review tooling</li>
+							<li>More efficiently able to collaborate</li>
+							<li>GitHub is company's direction</li>
+							<li>Act as pilot for other projects</li>
+							<li>Keep team up to date with industry</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Builds</h2>
+						<div style="margin-bottom:1em;">
+							<a href="https://jazz.net/help-dev/clm/index.jsp?re=1&topic=/com.ibm.team.concert.tutorial.doc/topics/tut_rtc_build.html&scope=null" target="jazzbuild">Jazz Build Engine</a>
+							==>
+							<a href="https://enterprise.travis-ci.com/" target="travis">Travis CI Enterprise</a>
+						</div>
+						<ul>
+							<li>Automatic branch builds</li>
+							<li>Concurrent builds</li>
+							<li>More developer focused</li>
+							<li>Integration with GitHub Enterprise</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Code Reviews</h2>
+						<ul>
+							<li>Helps educate each other on Angular</li>
+							<li>No one can push to master</li>
+							<li>Approved PRs enforced by GitHub</li>
+							<li>Slack channel to consolidate open PRs</li>
+							<li>Daily Slackbot reminders</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Standups</h2>
+						<ul>
+							<li>Critical to success; need communication</li>
+							<li>Decentralized team (3 locations)</li>
+							<li>Standups often turned into long discussions</li>
+							<li>Moved standup to Slack vs. phone</li>
+							<li>Slackbot reminder at 9am for status</li>
+						</ul>
+						<div>TODO PUT SLACKBOT REMINDER IN HERE</div>
+					</section>
+
+					<section>
+						<h2>Daily Technical Meetings</h2>
+						<ul>
+							<li>Communication / sharing important</li>
+							<li>Daily meeting for:</li>
+							<ul>
+								<li>Education topics</li>
+								<li>Code walkthroughs</li>
+								<li>Mob programming</li>
+								<li>Planning</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Demos</h2>
+						<ul>
+							<li>Need feedback from stakeholders (new UX)</li>
+							<li>Weekly Friday demos</li>
+							<li>Create work items for each action</li>
+							<li>Schedule followup discussions if needed</li>
+						</ul>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="reveal.js-3.6.0/lib/js/head.min.js"></script>
+		<script src="reveal.js-3.6.0/js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: true,
+				dependencies: [
+					{ src: 'reveal.js-3.6.0/plugin/markdown/marked.js' },
+					{ src: 'reveal.js-3.6.0/plugin/markdown/markdown.js' },
+					{ src: 'reveal.js-3.6.0/plugin/notes/notes.js', async: true },
+					{ src: 'reveal.js-3.6.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
