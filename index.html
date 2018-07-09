@@ -79,17 +79,17 @@
 
 				<section>
 					<section>
-						<h2>1. Setting the Stage</h2>
+						<h2>Setting the Stage</h2>
 					</section>
 
 					<section>
 						<h2>Application State</h2>
 						<ul>
 							<li>5-6 UI developers</li>
-							<li>Deployed in customer environments</li>
-							<li>Customer support / new features still required</li>
 							<li>Medical application</li>
 							<li>Very dynamic, lots of configuration flags</li>
+							<li>Deployed in customer environments</li>
+							<li>Customer support / new features still required</li>
 							<li>Automated Selenium tests validating logic</li>
 							<li>Supports: IE11, FF, Chrome, iOS</li>
 						</ul>
@@ -99,7 +99,7 @@
 						<h2>Code History</h2>
 						<ul>
 							<li>Originally built in <a href="https://dojotoolkit.org/" target="dojo">Dojo Toolkit</a></li>
-							<li>Ported to AngularJS</li>
+							<li>Ported to AngularJS (early 1.x)</li>
 							<li>Minimal usage of 1.5 components</li>
 							<li>$scope soup</li>
 							<li>Accessible</li>
@@ -122,7 +122,7 @@
 
 				<section>
 					<section>
-						<h2>2. Justifying the Conversion</h2>
+						<h2>Justifying the Conversion</h2>
 					</section>
 
 					<section>
@@ -136,16 +136,12 @@
 					</section>
 
 					<section>
-						<h2>Don't Over Promise</h2>
+						<h2>Justify to the Business</h2>
+						<div style="margin-bottom: .5em">Bad answers:</div>
 						<ul>
-							<li>Realistic expectations</li>
-							<ul>
-								<li>Learning</li>
-								<li>Vacations</li>
-								<li>Maintain existing product</li>
-								<li>Failures / learning opportunities</li>
-								<li>Unexpected complications</li>
-							</ul>
+							<li>It will be good for my resume</li>
+							<li>It looks like a cool technology</li>
+							<li>Want to try out something I just learned</li> 
 						</ul>
 					</section>
 
@@ -154,11 +150,15 @@
 						<ul>
 							<li>New UX</li>
 							<li>New look and feel</li>
-							<li>Base for new features</li>
+							<li>Built for future application direction</li>
 							<li>Lower maintenance cost</li>
-							<li>Learn tech base for future products</li>
+							<li>Pilot tech base for future products</li>
 							<li>Estimate: 5-6 months</li>
-							<li>Sacrifice: limit features to new UX</li>
+							<li>Sacrifices:</li>
+							<ul>
+								<li>Some bugs only fixed in new UX</li>
+								<li>Limit features development in old UX</li>
+							</ul>
 						</ul>
 					</section>
 
@@ -185,20 +185,35 @@
 							</div>
 						</div>
 					</section>
+
+					<section>
+						<h2>Over Promising</h2>
+						<ul>
+							<li>Realistic expectations</li>
+							<ul>
+								<li>Learning</li>
+								<li>Vacations</li>
+								<li>Maintain existing product</li>
+								<li>Failures / learning opportunities</li>
+								<li>Unexpected complications</li>
+							</ul>
+						</ul>
+					</section>
 				</section>
 
 				<section>
 					<section>
-						<h2>3. Learn / Education</h2>
+						<h2>Learn / Education</h2>
 					</section>
 
 					<section>
-						<h2>Steps</h2>
+						<h2>Learn</h2>
 						<ul>
-							<li>Important to spent time to learn framework</li>
-							<li>Started with a few team members; share out</li>
-							<li>Best practices (<a href="https://angular.io/guide/styleguide" target="styleguide">style guide</a>)</li>
-							<li>Potential pitfalls</li>
+							<li>Important to spend time to learn framework</li>
+							<li>Started with a few team members</li>
+							<li>Share summary of learning with team</li>
+							<li>Follow best practices (<a href="https://angular.io/guide/styleguide" target="styleguide">style guide</a>)</li>
+							<li>Learn potential pitfalls</li>
 						</ul>
 					</section>
 
@@ -243,7 +258,7 @@
 
 				<section>
 					<section>
-						<h2>4. Identifying Dependencies</h2>
+						<h2>Identifying Dependencies</h2>
 					</section>
 
 					<section>
@@ -253,6 +268,33 @@
 							<li>Are there Angular versions?</li>
 							<li>Validate in dependency test app</li>
 						</ol>
+					</section>
+
+					<section>
+						<table>
+							<thead>
+								<th>1.x</th>
+								<th>Angular</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>ng-idle</td>
+									<td>ng2-idle</td>
+								</tr>
+								<tr>
+									<td>angular-ui/bootstrap</td>
+									<td>
+										ng-bootstrap
+										<br>ngx-bootstrap
+									</td>
+								</tr>
+								<tr>
+									<td>angular-translate</td>
+									<td>ngx-translate</td>
+								</tr>
+								<!-- TODO MORE -->
+							</tbody>
+						</table>
 					</section>
 
 					<section>
@@ -278,6 +320,7 @@
 							<li>Right-to-left support</li>
 							<li>Translation support</li>
 							<li>Acceptable license</li>
+							<li>Works in AoT build</li>
 							<li>Issues, contributors, activity</li>
 						</ul>
 					</section>
@@ -285,7 +328,7 @@
 
 				<section>
 					<section>
-						<h2>5. Reuse</h2>
+						<h2>Reuse</h2>
 					</section>
 
 					<section>
@@ -295,13 +338,19 @@
 							<li>Filters</li>
 							<li>Directives</li>
 							<li>Some controller functions</li>
+							<li>Translations</li>
 						</ul>
+					</section>
+
+					<section>
+						DIAGRAM  <!-- TODO -->
 					</section>
 					
 					<section>
 						<h2>Reusing Code</h2>
 						<ul>
 							<li>Update syntax</li>
+							<li>Update injected services</li>
 							<li>Add types</li>
 							<li>Decide between Promises / Observables</li>
 							<li>Migrate functions only when needed</li>
@@ -312,7 +361,7 @@
 
 				<section>
 					<section>
-						<h2>6. Library Projects</h2>
+						<h2>Library Projects</h2>
 					</section>
 
 					<section>
@@ -372,7 +421,7 @@
 
 				<section>
 					<section>
-						<h2>7. Tooling/Process Change</h2>
+						<h2>Tooling/Process Change</h2>
 					</section>
 
 					<section>
@@ -462,6 +511,177 @@
 							<li>Weekly Friday demos</li>
 							<li>Create work items for each action</li>
 							<li>Schedule followup discussions if needed</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>
+							Pitfall:<br>Differing Developer Styles
+						</h2>
+					</section>
+
+					<section>
+						<h2>Problem</h2>
+						<ul>
+							<li>Developers have code style preferences</li>
+							<li>Commit messages are inconsistent</li>
+							<li>No established styles on team</li>
+							<li>When fixing defects, often unnecessary changes made due to style</li>
+							<li>Makes diffs very difficult to parse</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Solution: Tooling</h2>
+						<ul>
+							<li><a href="https://prettier.io/" target="prettier">Prettier</a>: consistent file formatting</li>
+							<li><a href="https://github.com/marionebl/commitlint" target="commitlint">commitlint</a>: strict format for commit message</li>
+							<li><a href="https://palantir.github.io/tslint/rules/" target="tslint-rules">Strict TSlint rules</a>: Enforce team establish practices</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Configuration</h2>
+						<pre><code data-trim>
+							{
+							  "husky": {
+							    "hooks": {
+								  "pre-commit": "lint-staged",
+								  "commitmsg": "commitlint -E GIT_PARAMS"
+							    }
+							  },
+							  "lint-staged": {
+							    "*.{ts,js,json,scss}": ["prettier --write", "git add"],
+							    "*.ts": ["npm run lint"]
+							  }
+							}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Interesting TSLint Rules</h2>
+						<table style="font-size: 50%">
+							<thead>
+								<tr>
+									<th>Rule</th>
+									<th>Purpose</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><code>"ordered-imports": true</code></td>
+									<td>Grouping, ordering imports</td>
+								</tr>
+								<tr>
+									<td><code>"no-unused-variable": true</code></td>
+									<td>Flag unused variables (and imports)</td>
+								</tr>
+								<tr>
+									<td><code>"arrow-parens": true</code></td>
+									<td>Require parenthesis around params in arrow functions</td>
+								</tr>
+								<tr>
+									<td>?????</td>
+									<td>Allow explicit type declarations (consistency)</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>
+							Pitfall:<br>Trying to do everything the "Angular" way
+						</h2>
+					</section>
+
+					<section>
+						<h2>Problem</h2>
+						<ul>
+							<li>Angular has a lot of abstraction layers</li>
+							<li>Often frustrating/annoying to understand abstraction</li>
+							<li>Harder for non-Angular developers to understand</li>
+							<li>Several discussions on we should be using Angular</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Solution</h2>
+						<ul>
+							<li>Decided to use abstractions when it makes sense</li>
+							<ul>
+								<li><code>@HostListener</code>, some <code>Renderer2</code></li>
+								<li>Just use <code>window</code> natively</li>
+								<li>Ignore difficult to use abstractions</li>
+							</ul>
+							<li>Team knew we wouldn't be server side rendering</li>
+							<li>Things became more simple when we didn't need to look it all up</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>
+							Pitfall:<br>Not Unsubscribing
+						</h2>
+					</section>
+
+					<section>
+						<h2>Problem</h2>
+						<ul>
+							<li>Very easy mistake to make</li>
+							<li>Causes memory leaks</li>
+							<li>Possible extra change detection cycles</li>
+							<li>May trigger unnecessary code to run</li>
+							<li>Unpredictable state changes</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Solution</h2>
+						<ul>
+							<li>Memory profiling to find leaks</li>
+							<li>Utilize <code>async</code> pipe more often</li>
+							<ul>
+								<li>Auto unsubscribes</li>
+								<li>Renders again when appropriate</li>
+							</ul>
+							<li>Ensure subscription is completed:</li>
+							<ul>
+								<li><code>.take(xx)</code> forces unsubscribe</li>
+								<li><code>.unsubscribe()</code></li>
+							</ul>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>
+							Pitfall:<br>OnPush Change Detection
+						</h2>
+					</section>
+
+					<section>
+						<h2>Problem</h2>
+						<ul>
+							<li>Default change detection (CD) strategy doesn't always scale well</li>
+							<li>Some event listers may trigger a lot of CD</li>
+							<li>Expensive function impls will slow down CD</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Solution</h2>
+						<ul>
+							<li>Use <code>ChangeDetectionStrategy.OnPush</code></li>
+							<li>Inject <code>ChangeDetectorRef</code> and manually execute CD if needed</li>
+							<li>Treat <code>@Input</code> values as immutable</li>
+							<li>Consider usage of some kind of store</li>
 						</ul>
 					</section>
 				</section>
