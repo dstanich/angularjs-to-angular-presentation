@@ -31,7 +31,7 @@
 					<h2>How We Did it</h2>
 					<img src="images/angular.svg">
 					<h3>David Stanich</h3>
-					<h4><a href="https://dstanich.github.io/angularjs-to-angular-presentation/" target="url">https://dstanich.github.io/angularjs-to-angular-presentation/</a></h4>
+					<h4 style="font-size: 50%"><a href="https://dstanich.github.io/angularjs-to-angular-presentation/" target="url">https://dstanich.github.io/angularjs-to-angular-presentation/</a></h4>
 				</section>
 
 				<section>
@@ -44,6 +44,8 @@
 								<li>Frontend development</li>
 								<li>Co-organizer Rochester FED@IBM</li>
 								<li>JavaScript, Angular, Java</li>
+								<li>Twitter: <a href="https://twitter.com/dstanich" target="twitter">@dstanich</a></li>
+								<li>GitHub: <a href="https://github.com/dstanich" target="gh">dstanich</a></li>
 							</ul>
 						</div>
 						<div style="flex: 1 1 25%">
@@ -153,7 +155,6 @@
 							<li>Built for future application direction</li>
 							<li>Lower maintenance cost</li>
 							<li>Pilot tech base for future products</li>
-							<li>Estimate: 5-6 months</li>
 							<li>Sacrifices:</li>
 							<ul>
 								<li>Some bugs only fixed in new UX</li>
@@ -163,27 +164,45 @@
 					</section>
 
 					<section>
+						<h2>Our Plan</h2>
+						<ul>
+							<li>Estimate: 5-6 months</li>
+							<li>Install side-by-side with old UI</li>
+							<ul>
+								<li>Won't disrupt other parts of project</li>
+								<li>Helpful for UX research to test</li>
+								<li>Compare behavior easily on same install</li>
+							</ul>
+							<li>Angular 4 (was just released at the time)</li>
+						</ul>
+					</section>
+
+					<section>
 						<h2>In Place or Rewrite?</h2>
-						<div style="display: flex">
-							<div style="flex: 1 1 50%; margin-right: 2em;">
-								<div style="font-weight: bold; border-bottom: 1px solid;">In place (ngUpgrade)</div>
-								<div style="text-align: start">
-									<div>+ Less risk in breaking</div>
-									<div>+ Incremental</div>
-									<div>- Difficult w/new UX</div>
-									<div>- Bundle size increases</div>
-								</div>
-							</div>
-							<div style="flex: 1 1 50%">
-								<div style="font-weight: bold;border-bottom: 1px solid;">Rewrite</div>
-								<div style="text-align: start">
-									<div>+ Cleaner code</div>
-									<div>+ Experience</div>
-									<div>- More time required</div>
-									<div>- Tests rewrite</div>
-								</div>
-							</div>
-						</div>
+						<table style="font-size: 75%">
+							<thead>
+								<th>In place (ngUpgrade)</th>
+								<th>Rewrite</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>+ Less risk in breaking</td>
+									<td>+ Cleaner code</td>
+								</tr>
+								<tr>
+									<td>+ Incremental</td>
+									<td>+ Experience in new framework</td>
+								</tr>
+								<tr>
+									<td>- Difficult w/new UX</td>
+									<td>- More time required</td>
+								</tr>
+								<tr>
+									<td>- Bundle size increases</td>
+									<td>- Requires more developers</td>
+								</tr>
+							</tbody>
+						</table>
 					</section>
 
 					<section>
