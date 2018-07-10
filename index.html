@@ -39,7 +39,7 @@
 					<div style="display: flex;">
 						<div style="flex: 1 1 75%">
 							<ul>
-								<li>Software Engineer</li>
+								<li>Advisory Software Engineer</li>
 								<li>IBM Watson Health (<a href="https://www.ibm.com/watson/health/" target="wh">website</a>)</li>
 								<li>Frontend development</li>
 								<li>Co-organizer Rochester FED@IBM</li>
@@ -61,9 +61,9 @@
 					<ul>
 						<li>Justifying the conversion</li>
 						<li>Education</li>
+						<li>Development methodology</li>
 						<li>Culture changes</li>
 						<li>Tool improvements</li>
-						<li>Development methodology</li>
 						<li>Angular pitfalls we encountered</li>
 					</ul>
 				</section>
@@ -237,6 +237,17 @@
 					</section>
 
 					<section>
+						<h2>Mob Programming</h2>
+						<ul>
+							<li>Time where we all work on same thing as once</li>
+							<li>Very frequent at first until team felt comfortable</li>
+							<li>Let different people drive each time</li>
+							<li>Learning opportunity for knowledge sharing</li>
+							<li>Start finding potential issues right away</li>
+						</ul>
+					</section>
+
+					<section>
 						<h2>Frontend Masters</h2>
 						<div>Locally based (Minneapolis) online, and in person, training workshops</div>
 						<div style="margin-top: 1em; text-align: start">
@@ -371,10 +382,6 @@
 						</ul>
 					</section>
 
-					<section>
-						DIAGRAM  <!-- TODO -->
-					</section>
-					
 					<section>
 						<h2>Reusing Code</h2>
 						<ul>
@@ -519,7 +526,15 @@
 							<li>Moved standup to Slack vs. phone</li>
 							<li>Slackbot reminder at 9am for status</li>
 						</ul>
-						<div>TODO PUT SLACKBOT REMINDER IN HERE</div>
+						<pre><code data-trim>
+							/remind #channel at 9am every weekday "@here STANDUP!  Use this format:
+							Y:
+							> - What you did yesterday
+							T:
+							> - What you doing today
+							B: Blockers
+							"
+						</code></pre>
 					</section>
 
 					<section>
@@ -580,8 +595,8 @@
 							{
 							  "husky": {
 							    "hooks": {
-								  "pre-commit": "lint-staged",
-								  "commitmsg": "commitlint -E GIT_PARAMS"
+							      "pre-commit": "lint-staged",
+							      "commitmsg": "commitlint -E GIT_PARAMS"
 							    }
 							  },
 							  "lint-staged": {
@@ -708,6 +723,7 @@
 						<h2>Problem</h2>
 						<ul>
 							<li>Very easy mistake to make</li>
+							<li>Not always clear when unsubscribe is required</li>
 							<li>Causes memory leaks</li>
 							<li>Possible extra change detection cycles</li>
 							<li>May trigger unnecessary code to run</li>
@@ -731,6 +747,21 @@
 							</ul>
 						</ul>
 					</section>
+				</section>
+
+				<section>
+					<h2>Success!!</h2>
+					<ul>
+						<li>Completed in roughly 6-7 months</li>
+						<li>Well received by customers</li>
+						<li>Has proven to be less difficult to debug</li>
+						<li>Team was able to adopt better practices</li>
+						<li>Library projects usable on other applications</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Questions??</h2>
 				</section>
 			</div>
 		</div>
