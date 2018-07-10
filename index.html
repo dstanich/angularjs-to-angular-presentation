@@ -658,6 +658,45 @@
 				<section>
 					<section>
 						<h2>
+							Pitfall:<br>OnPush Change Detection
+						</h2>
+						<div style="margin-top: 2em"> 
+							<a href="https://stackblitz.com/github/dstanich/angularjs-to-angular-presentation/tree/master/onpush-example" target="onpushdemo">DEMO</a>
+						</div>
+					</section>
+
+					<section>
+						<h2>Problem</h2>
+						<ul>
+							<li>Default change detection (CD) strategy doesn't always scale well</li>
+							<li>Some event listers may trigger a lot of CD</li>
+							<li>Expensive function impls will slow down CD</li>
+							<li>Demo:</li>
+							<ul>
+								<li>Every mouse event is triggering CD to run</li>
+								<li>Expensive function being called every time</li>
+							</ul>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Solution</h2>
+						<ul>
+							<li>Use <code>ChangeDetectionStrategy.OnPush</code></li>
+							<li>Inject <code>ChangeDetectorRef</code> and manually execute CD if needed</li>
+							<li>Treat <code>@Input</code> values as immutable</li>
+							<li>Demo:</li>
+							<ul>
+								<li>OnPush prevents calculated-value from being re-rendered</li>
+								<li>Ideally, OnPush should be applied everywhere</li>
+							</ul>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>
 							Pitfall:<br>Not Unsubscribing
 						</h2>
 					</section>
@@ -687,33 +726,6 @@
 								<li><code>.take(xx)</code> forces unsubscribe</li>
 								<li><code>.unsubscribe()</code></li>
 							</ul>
-						</ul>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h2>
-							Pitfall:<br>OnPush Change Detection
-						</h2>
-					</section>
-
-					<section>
-						<h2>Problem</h2>
-						<ul>
-							<li>Default change detection (CD) strategy doesn't always scale well</li>
-							<li>Some event listers may trigger a lot of CD</li>
-							<li>Expensive function impls will slow down CD</li>
-						</ul>
-					</section>
-
-					<section>
-						<h2>Solution</h2>
-						<ul>
-							<li>Use <code>ChangeDetectionStrategy.OnPush</code></li>
-							<li>Inject <code>ChangeDetectorRef</code> and manually execute CD if needed</li>
-							<li>Treat <code>@Input</code> values as immutable</li>
-							<li>Consider usage of some kind of store</li>
 						</ul>
 					</section>
 				</section>
