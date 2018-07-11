@@ -630,8 +630,28 @@
 									<td>Require parenthesis around params in arrow functions</td>
 								</tr>
 								<tr>
-									<td>?????</td>
-									<td>Allow explicit type declarations (consistency)</td>
+									<td><code>"array-type": [true, "generic"]</code></td>
+									<td>Force <code>Array&lt;T&gt;</code> syntax</td>
+								</tr>
+								<tr>
+									<td><code>"object-literal-shorthand": true</code></td>
+									<td>Force ES6 shorthand (ex: no myVar: myVar)</td>
+								</tr>
+								<tr>
+									<td><code>"member-access": true</code></td>
+									<td>Force devs to be explicit on public/private</td>
+								</tr>
+								<tr>
+									<td><code>member-ordering</code></td>
+									<td>Ideally, force ordering</td>
+								</tr>
+								<tr>
+									<td>Remove no-inferrable-types rule</td>
+									<td>Allow redundant type declarations</td>
+								</tr>
+								<tr>
+									<td>Remove quotemark rule</td>
+									<td>May conflict with Prettier</td>
 								</tr>
 							</tbody>
 						</table>
