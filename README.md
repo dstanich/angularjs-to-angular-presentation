@@ -1,7 +1,8 @@
 # AngularJS to Angular: How We Did It
 
 Presentation given to...
-* 2018-07-11 [AngularMN July 2018 Meetup](https://www.meetup.com/AngularMN/events/251649590/) | [Recording](https://youtu.be/sUsPqyPDzEk)
+* 2018-08-10 [Midwest JS 2018](http://midwestjs.com/#/schedule)
+* 2018-07-11 [AngularMN July 2018 Meetup](https://www.meetup.com/AngularMN/events/251649590/) | [Recording](https://youtu.be/sUsPqyPDzEk) | [Branch](https://github.com/dstanich/angularjs-to-angular-presentation/tree/20180711-angularmn)
 
 ## Overview
 A migration story of one experience of a team converting a large AngularJS application to Angular.  This is not meant to be a how-to guide but instead an example of how one team tackled the process and some lessons learned along the way.
