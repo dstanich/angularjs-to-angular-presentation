@@ -56,7 +56,8 @@
 
 				<section>
 					<h2>What we'll cover</h2>
-					<div>One experience in migration (May 2017 - June 2018)</div>
+					<div>One experience in migration and culture changes</div>
+					<div>(May 2017 - June 2018)</div>
 					<br>
 					<ul>
 						<li>Justifying the conversion</li>
@@ -132,7 +133,7 @@
 						<div style="margin-bottom: .5em">Common concerns:</div>
 						<ul>
 							<li>What is the value of converting?</li>
-							<li>What are we sacrificing by converting?</li> 
+							<li>What are we sacrificing by converting?</li>
 							<li>How long is this going to take?</li>
 						</ul>
 					</section>
@@ -143,7 +144,7 @@
 						<ul>
 							<li>It will be good for my resume</li>
 							<li>It looks like a cool technology</li>
-							<li>Want to try out something I just learned</li> 
+							<li>Want to try out something I just learned</li>
 						</ul>
 					</section>
 
@@ -592,19 +593,29 @@
 					<section>
 						<h2>Configuration</h2>
 						<pre><code data-trim>
+							// package.json
 							{
 							  "husky": {
 							    "hooks": {
 							      "pre-commit": "lint-staged",
-							      "commitmsg": "commitlint -E GIT_PARAMS"
+							      "commitmsg": "commitlint -e $GIT_PARAMS"
 							    }
 							  },
 							  "lint-staged": {
 							    "*.{ts,js,json,scss}": ["prettier --write", "git add"],
-							    "*.ts": ["npm run lint"]
+							    "*.ts": ["tslint"]
 							  }
 							}
 						</code></pre>
+						<pre><code data-trim>
+							// commitlint.config.js
+							module.exports = { extends: ['@commitlint/config-conventional'] };
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Example</h2>
+						<img src="images/tooling_example.gif">
 					</section>
 
 					<section>
@@ -661,41 +672,9 @@
 				<section>
 					<section>
 						<h2>
-							Pitfall:<br>Trying to do everything the "Angular" way
-						</h2>
-					</section>
-
-					<section>
-						<h2>Problem</h2>
-						<ul>
-							<li>Angular has a lot of abstraction layers</li>
-							<li>Often frustrating/annoying to understand abstraction</li>
-							<li>Harder for non-Angular developers to understand</li>
-							<li>Several discussions on we should be using Angular</li>
-						</ul>
-					</section>
-
-					<section>
-						<h2>Solution</h2>
-						<ul>
-							<li>Decided to use abstractions when it makes sense</li>
-							<ul>
-								<li><code>@HostListener</code>, some <code>Renderer2</code></li>
-								<li>Just use <code>window</code> natively</li>
-								<li>Ignore difficult to use abstractions</li>
-							</ul>
-							<li>Team knew we wouldn't be server side rendering</li>
-							<li>Things became more simple when we didn't need to look it all up</li>
-						</ul>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h2>
 							Pitfall:<br>OnPush Change Detection
 						</h2>
-						<div style="margin-top: 2em"> 
+						<div style="margin-top: 2em">
 							<a href="https://stackblitz.com/github/dstanich/angularjs-to-angular-presentation/tree/master/onpush-example" target="onpushdemo">DEMO</a>
 						</div>
 					</section>
@@ -734,7 +713,7 @@
 						<h2>
 							Pitfall:<br>Not Unsubscribing
 						</h2>
-						<div style="margin-top: 2em"> 
+						<div style="margin-top: 2em">
 							<a href="https://stackblitz.com/github/dstanich/angularjs-to-angular-presentation/tree/master/missing-unsubscribe-example" target="unsubdemo">DEMO</a>
 						</div>
 					</section>
@@ -765,6 +744,38 @@
 								<li><code>.take(xx)</code> forces unsubscribe</li>
 								<li><code>.unsubscribe()</code></li>
 							</ul>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>
+							Pitfall:<br>Trying to do everything the "Angular" way
+						</h2>
+					</section>
+
+					<section>
+						<h2>Problem</h2>
+						<ul>
+							<li>Angular has a lot of abstraction layers</li>
+							<li>Often frustrating/annoying to understand abstraction</li>
+							<li>Harder for non-Angular developers to understand</li>
+							<li>Several discussions on we should be using Angular</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Solution</h2>
+						<ul>
+							<li>Decided to use abstractions when it makes sense</li>
+							<ul>
+								<li><code>@HostListener</code>, some <code>Renderer2</code></li>
+								<li>Just use <code>window</code> natively</li>
+								<li>Ignore difficult to use abstractions</li>
+							</ul>
+							<li>Team knew we wouldn't be server side rendering</li>
+							<li>Things became more simple when we didn't need to look it all up</li>
 						</ul>
 					</section>
 				</section>

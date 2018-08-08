@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Item } from './item/item.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { Item } from './item/item.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   items: Array<Item> = [];
 
