@@ -55,6 +55,21 @@
 				</section>
 
 				<section>
+					<h2>Terminology</h2>
+					<div style="margin-top: 2em; display: flex">
+						<div style="flex: 1 1 50%">
+							AngularJS === 1.x
+						</div>
+						<div style="flex: 1 1 50%">
+							Angular === 2+
+						</div>
+					</div>
+					<div style="margin-top: 8em; font-size: .5em">
+						<a href="http://blog.angularjs.org/2016/12/ok-let-me-explain-its-going-to-be.html" target="terms">http://blog.angularjs.org/2016/12/ok-let-me-explain-its-going-to-be.html</a>
+					</div>
+				</section>
+
+				<section>
 					<h2>What we'll cover</h2>
 					<div>One experience in migration and culture changes</div>
 					<div>(May 2017 - June 2018)</div>
@@ -214,7 +229,7 @@
 								<li>Learning</li>
 								<li>Vacations</li>
 								<li>Maintain existing product</li>
-								<li>Failures / learning opportunities</li>
+								<li>Failures - "learning opportunities"</li>
 								<li>Unexpected complications</li>
 							</ul>
 						</ul>
@@ -240,11 +255,11 @@
 					<section>
 						<h2>Mob Programming</h2>
 						<ul>
-							<li>Time where we all work on same thing as once</li>
-							<li>Very frequent at first until team felt comfortable</li>
-							<li>Let different people drive each time</li>
+							<li>Work as a team on a single function at same time</li>
+							<li>Alternate team member who drives the code</li>
 							<li>Learning opportunity for knowledge sharing</li>
 							<li>Start finding potential issues right away</li>
+							<li>3+ times each week initially</li>
 						</ul>
 					</section>
 
@@ -386,12 +401,12 @@
 					<section>
 						<h2>Reusing Code</h2>
 						<ul>
-							<li>Update syntax</li>
+							<li>Migrate as needed; get rid of dead code</li>
+							<li>Update to 2+ syntax</li>
 							<li>Update injected services</li>
 							<li>Add types</li>
 							<li>Decide between Promises / Observables</li>
-							<li>Migrate functions only when needed</li>
-							<li>Fight urge to rewrite</li>
+							<li>Fight urge to rewrite logic</li>
 						</ul>
 					</section>
 				</section>
@@ -406,14 +421,27 @@
 						<ul>
 							<li>Create two packages for future projects</li>
 							<li>Publish packages via internal NPM registry</li>
-							<li>Custom build scripts</li>
+							<li>Versioned via <a href="https://semver.org/" target="semver">semver</a> (major.minor.fix)</li>
+							<li>Custom build for <a href="https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/edit" target="package">Angular package format</a></li>
 							<ul>
 								<li>Gulp</li>
 								<li>tsc</li>
 								<li>Rollup</li>
 							</ul>
-							<li>Versioned via <a href="https://semver.org/" target="semver">semver</a> (major.minor.fix)</li>
 						</ul>
+					</section>
+
+					<section>
+						<h2>Suggestion: Use angular-cli</h2>
+						<div>angular-cli (v6) now supports library projects</div>
+						<pre><code data-trim>
+							ng generate library my-lib
+
+							ng build my-lib
+						</code></pre>
+						<div style="margin-top: 3em; font-size: .8em">
+							<a href="https://github.com/angular/angular-cli/wiki/stories-create-library" target="ng-cli-lib">https://github.com/angular/angular-cli/wiki/stories-create-library</a>
+						</div>
 					</section>
 
 					<section>
